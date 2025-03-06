@@ -160,12 +160,11 @@ O objetivo do módulo é que os alunos aprendam diversas técnicas que podem ser
 
 ### 🎯 **Avaliação:**
 📌 Listas de exercícios
-📌 Prova teórico-prática
 📌 Projeto
 
 ---
-## **Encerramento** 🎓
+## **Notas finais**
 - Desejo a todos um excelente aprendizado!
-- Dúvidas? Contato: [Seu e-mail ou canal de comunicação]
+- Dúvidas? Contato: canal `turma-1322` no Discord
 
 🚀 **Vamos começar?**
