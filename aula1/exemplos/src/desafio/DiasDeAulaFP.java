@@ -2,33 +2,37 @@ package desafio;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class DiasDeAulaFP {
+
+    public static final int NUMERO_DE_AULAS = 9;
+    private static int count = 1;
 
     public static void main(String[] args) {
         int dia = Integer.parseInt(args[0]);
         int mes = Integer.parseInt(args[1]);
         int ano = Integer.parseInt(args[2]);
 
-        LocalDate dataAula = LocalDate.of(ano, mes, dia);
+        LocalDate dataInicial = LocalDate.of(ano, mes, dia);
 
-        Predicate<DayOfWeek> isDiaValido = dayOfWeek -> switch (dayOfWeek) {
-            case FRIDAY, MONDAY, WEDNESDAY -> true;
-            default -> false;
-        };
+        Predicate<DayOfWeek> isDiaValido = dayOfWeek ->
+                switch (dayOfWeek) {
+                    case FRIDAY, MONDAY, WEDNESDAY -> true;
+                    default -> false;
+                };
 
-        if (!isDiaValido.test(dataAula.getDayOfWeek())) {
+        if (isDiaValido.negate().test(dataInicial.getDayOfWeek())) {
             throw new IllegalArgumentException("A data inicial não é um dia válido de aula.");
         }
 
-        AtomicInteger count = new AtomicInteger(1);
-
-        Stream.iterate(dataAula, date -> date.plusDays(1))
+        Stream.iterate(dataInicial, x -> count <= NUMERO_DE_AULAS, date -> date.plusDays(1))
                 .filter(date -> isDiaValido.test(date.getDayOfWeek()))
-                .limit(9)
-                .forEachOrdered(date -> System.out.println("Aula" + count.getAndIncrement() + " (" + date + ")"));
+                .forEach(date -> System.out.println("Aula" + next() + " (" + date + ")"));
+    }
+
+    private static int next() {
+        return count++;
     }
 }

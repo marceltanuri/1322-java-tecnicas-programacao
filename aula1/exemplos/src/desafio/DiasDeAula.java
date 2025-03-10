@@ -50,7 +50,7 @@ public class DiasDeAula {
 
         int count = 1;
 
-        while (count<= NUMERO_DE_AULAS){
+        while (true){
             if(isDiaValido(diaDeAula.getDayOfWeek())){
                 System.out.println("Aula"+count + " (" + diaDeAula + ")");
                 count++;
